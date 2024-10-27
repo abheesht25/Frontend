@@ -2,15 +2,13 @@
 import React, { useState } from 'react';
 
 function Signup({ onSwitch }) {
-  const [userType, setUserType] = useState('customer');
+  const [userType, setUserType] = useState('customer'); // 'customer' or 'technician'
 
-  const handleUserTypeChange = (e) => {
-    setUserType(e.target.value);
-  };
+  const handleUserTypeChange = (e) => setUserType(e.target.value);
 
   return (
-    <div>
-      <h2>Sign Up</h2>
+    <div className="signup-form">
+      <h2>Register</h2>
       <select onChange={handleUserTypeChange} value={userType}>
         <option value="customer">Customer</option>
         <option value="technician">Technician</option>
@@ -33,7 +31,9 @@ function Signup({ onSwitch }) {
         <input type="password" placeholder="Password" required />
         <button type="submit">Register</button>
       </form>
-      <button onClick={onSwitch}>Already have an account? Sign In</button>
+      <p>
+        Already have an account? <span onClick={onSwitch} className="link">Login here</span>
+      </p>
     </div>
   );
 }
