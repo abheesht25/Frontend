@@ -8,7 +8,7 @@
 .company-section {
   flex: 1;
   position: relative;
-  background-image: url('/Users/I528586/forntendxxx/Frontend/bikeapp/src/assets/96FF6912-FB9B-47D9-93FA-13D22351F49E.jpeg'); /* Path to your image in the public folder */
+  background-image: url('/Users/I528586/forntendxxx/Frontend/bikeapp/src/assets/background-image.jpeg'); /* Ensure this path is correct */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -34,14 +34,23 @@
   position: relative;
   z-index: 2;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   animation: fadeIn 1.5s ease-in-out;
+}
+
+.company-image {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .company-text {
   font-size: 2.5rem;
   font-weight: bold;
   color: white;
-  margin-top: 1rem;
+  margin-top: 50px;
 }
 
 /* Right section styling */
@@ -62,13 +71,96 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Home view styling after login */
+.home-view .company-section {
+  display: none; /* Hide the left section after login */
+}
+
+.home-view {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2c3e50;
+  color: #ffffff;
+}
+
+.dashboard .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: #ffbe76;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links button:hover {
+  color: #ffd699;
+}
+
+/* Home page layout */
+.home-page {
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  width: 80%; /* Adjust width as necessary */
+  margin: auto;
+}
+
+.home-content, .home-details {
+  flex: 1;
+  margin: 10px;
+}
+
+.home-header h1 {
+  color: #ffbe76;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.home-header ul {
+  list-style: none;
+  padding: 0;
+}
+
+.home-header li {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Form styling */
 h2 {
   color: #333;
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-select {
+select, input {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
@@ -81,13 +173,6 @@ form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
 }
 
 button {
@@ -113,6 +198,42 @@ button:hover {
   font-size: 0.9rem;
 }
 
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2c3e50;
+  color: #ffffff;
+}
+
+.dashboard .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: #ffbe76;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links button:hover {
+  color: #ffd699;
+}
+
+/* Dashboard View Styling */
+.dashboard-view {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px); /* Adjust height based on navbar height */
+  overflow-y: auto;
+}
 /* Animations */
 @keyframes fadeIn {
   from {

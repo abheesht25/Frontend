@@ -1,0 +1,45 @@
+.booking-history-container {
+    text-align: left; /* Align text to the left */
+    padding: 20px;
+    padding-right: 64rem;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+  }
+   
+  h1 {
+    margin-bottom: 20px; /* Add space below the title */
+  }
+   
+  .cards-container {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    align-items: flex-start; /* Align cards to the left */
+    width: 75%; /* Set width to 75% of the page */
+    margin: 0 auto; /* Center the cards container */
+  }
+   
+  .booking-card {
+    background-color: #d3d3d3; /* Light grey background */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 15px 0; /* Vertical margin for spacing between cards */
+    padding: 20px;
+    padding-right: 54rem;
+    width: 100%; /* Cards will take the full width of the container */
+    transition: background-color 0.3s, transform 0.3s;
+    text-overflow: inherit;
+  }
+   
+  .booking-card:hover {
+    background-color: #c0c0c0; /* Slightly darker grey on hover */
+    transform: translateY(-5px); /* Lift effect on hover */
+  }
+   
+  .booking-card h3 {
+    margin: 0 0 10px;
+  }
+   
+  .booking-card p {
+    margin: 5px 0;
+  }
+

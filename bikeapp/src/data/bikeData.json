@@ -1,0 +1,11 @@
+{
+    "companies": ["Yamaha", "Honda", "Suzuki", "Kawasaki", "Ducati"],
+    "models": {
+      "Yamaha": ["YZF-R15", "MT-15", "FZ S"],
+      "Honda": ["CBR 250R", "Activa", "Unicorn"],
+      "Suzuki": ["Gixxer", "Access", "Intruder"],
+      "Kawasaki": ["Ninja 300", "Z650", "Versys 1000"],
+      "Ducati": ["Monster", "Diavel", "Panigale"]
+    },
+    "serviceCategories": ["Washing", "Servicing", "Breakdown", "Repair"]
+  }
