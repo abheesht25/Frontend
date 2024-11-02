@@ -1,0 +1,46 @@
+/* src/components/MechanicHomePage.css */
+.mechanic-home-container {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f4f4f4;
+  }
+  
+  .welcome-section {
+    background-color: #1e90ff;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  
+  .onboard-button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #ff8c00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .dashboard-section {
+    text-align: left;
+    margin-top: 2rem;
+  }
+  
+  .dashboard-cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  
+  .dashboard-card {
+    flex: 1;
+    min-width: 120px;
+    background-color: #e0e0e0;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  

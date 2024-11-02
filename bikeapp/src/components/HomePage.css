@@ -1,8 +1,8 @@
 /* src/components/HomePage.css */
 .home-container {
     display: flex;
-    height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full viewport width */
+    height: 110vh; /* Full viewport height */
+    width: 93.5vw; /* Full viewport width */
     max-width: none;
     padding: 2rem;
     background-color: #ffffff;

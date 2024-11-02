@@ -1,0 +1,52 @@
+/* src/components/MechanicOnboardingForm.css */
+.onboarding-form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .onboarding-form-container h2 {
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .onboarding-form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .onboarding-form-container input,
+  .onboarding-form-container textarea {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    padding: 0.8rem;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cancel-button {
+    margin-top: 0.5rem;
+    padding: 0.8rem;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
