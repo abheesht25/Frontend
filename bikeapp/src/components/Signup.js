@@ -1,10 +1,17 @@
 // src/components/Signup.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Signup({ onSwitch }) {
+function Signup() {
   const [userType, setUserType] = useState('customer'); // 'customer' or 'technician'
+  const navigate = useNavigate(); // Use navigate for redirection
 
   const handleUserTypeChange = (e) => setUserType(e.target.value);
+
+  // Function to handle "Login here" click, redirecting to login page
+  const handleLoginRedirect = () => {
+    navigate('/'); // Redirect to the login page route (assuming "/" is the login route)
+  };
 
   return (
     <div className="signup-form">
@@ -32,7 +39,7 @@ function Signup({ onSwitch }) {
         <button type="submit">Register</button>
       </form>
       <p>
-        Already have an account? <span onClick={onSwitch} className="link">Login here</span>
+        Already have an account? <span onClick={handleLoginRedirect} className="link">Login here</span>
       </p>
     </div>
   );

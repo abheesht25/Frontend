@@ -1,38 +1,36 @@
 // src/components/MechanicHomePage.js
+// src/components/MechanicHomePage.js
+
 import React, { useState } from 'react';
 import MechanicOnboardingForm from './MechanicOnboardingForm';
 import './MechanicHomePage.css';
 
 function MechanicHomePage() {
-  const [showOnboardingForm, setShowOnboardingForm] = useState(false);
+    const [showOnboarding, setShowOnboarding] = useState(false);
 
-  const handleOnboardClick = () => {
-    setShowOnboardingForm(true);
-  };
+    const handleCloseForm = () => {
+        setShowOnboarding(false);
+    };
 
-  return (
-    <div className="mechanic-home-container">
-      <div className="welcome-section">
-        <h1>Welcome, Mechanic!</h1>
-        <p>Onboard yourself to get started and manage your services.</p>
-        <button className="onboard-button" onClick={handleOnboardClick}>
-          Onboard Yourself
-        </button>
-      </div>
-      
-      <div className="dashboard-section">
-        <h2>Your Dashboard</h2>
-        <div className="dashboard-cards">
-          <div className="dashboard-card">Profile</div>
-          <div className="dashboard-card">Services</div>
-          <div className="dashboard-card">Appointments</div>
-          <div className="dashboard-card">Earnings</div>
+    return (
+        <div className={`mechanic-home-container ${showOnboarding ? 'blur-background' : ''}`}>
+            <div className="welcome-content">
+                <h1 className="welcome-title">Welcome, Mechanic!</h1>
+                <p className="welcome-subtitle">Get ready to streamline your services and reach more clients.</p>
+                <button 
+                    className="onboard-button" 
+                    onClick={() => setShowOnboarding(true)}
+                >
+                    Onboard Yourself
+                </button>
+            </div>
+            {showOnboarding && (
+                <div className="onboarding-form-overlay">
+                    <MechanicOnboardingForm closeForm={handleCloseForm} />
+                </div>
+            )}
         </div>
-      </div>
-
-      {showOnboardingForm && <MechanicOnboardingForm onClose={() => setShowOnboardingForm(false)} />}
-    </div>
-  );
+    );
 }
 
 export default MechanicHomePage;

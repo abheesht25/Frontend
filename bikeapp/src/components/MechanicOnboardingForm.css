@@ -1,52 +1,87 @@
-/* src/components/MechanicOnboardingForm.css */
-.onboarding-form-container {
+/* MechanicOnboardingForm.css */
+
+.overlay {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 400px;
-    padding: 2rem;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-  }
-  
-  .onboarding-form-container h2 {
-    margin-bottom: 1rem;
-    color: #333;
-  }
-  
-  .onboarding-form-container form {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
     display: flex;
-    flex-direction: column;
-  }
-  
-  .onboarding-form-container input,
-  .onboarding-form-container textarea {
-    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: center;
+    animation: fadeOverlay 0.5s ease forwards;
+}
+
+.onboarding-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: scaleUp 0.3s ease forwards;
+    opacity: 1; /* Ensure full opacity */
+}
+
+.onboarding-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.onboarding-form input {
+    width: 93%;
     padding: 0.8rem;
+    margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
-  }
-  
-  .submit-button {
+    font-size: 1rem;
+}
+
+.onboarding-form button {
+    width: 100%;
     padding: 0.8rem;
-    background-color: #1e90ff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .cancel-button {
     margin-top: 0.5rem;
-    padding: 0.8rem;
-    background-color: #ccc;
-    color: #333;
+    font-size: 1rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
+    transition: background-color 0.3s ease;
+}
+
+.onboarding-form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.onboarding-form button[type="button"] {
+    background-color: #f44336;
+    color: white;
+}
+
+.onboarding-form button:hover {
+    opacity: 0.9;
+}
+
+/* Animations */
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

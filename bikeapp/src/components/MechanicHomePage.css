@@ -1,46 +1,73 @@
-/* src/components/MechanicHomePage.css */
+/* Mechanic Home Page Styles */
+
 .mechanic-home-container {
-    padding: 2rem;
+    background: url('/Users/I528586/forntendxxx/Frontend/bikeapp/src/assets/nina-mercado-e9YFrEBWit8-unsplash.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    position: relative;
+}
+
+.welcome-content {
     text-align: center;
-    background-color: #f4f4f4;
-  }
-  
-  .welcome-section {
-    background-color: #1e90ff;
-    color: #fff;
     padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
-    margin-bottom: 2rem;
-  }
-  
-  .onboard-button {
-    margin-top: 1rem;
+    animation: fadeIn 1s ease forwards;
+}
+
+.welcome-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.onboard-button {
+    background-color: #ff7e39;
+    color: white;
     padding: 0.8rem 1.5rem;
-    background-color: #ff8c00;
-    color: #fff;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-  }
-  
-  .dashboard-section {
-    text-align: left;
-    margin-top: 2rem;
-  }
-  
-  .dashboard-cards {
+    transition: background-color 0.3s ease;
+}
+
+.onboard-button:hover {
+    background-color: #ff9a4c;
+}
+
+/* Form Overlay for Onboarding */
+.onboarding-form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-  }
-  
-  .dashboard-card {
-    flex: 1;
-    min-width: 120px;
-    background-color: #e0e0e0;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
+    animation: fadeInOverlay 0.5s ease;
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

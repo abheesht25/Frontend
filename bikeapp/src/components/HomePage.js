@@ -59,7 +59,7 @@ function HomePage() {
       <div className="right-section">
         {/* Video background */}
         <video autoPlay loop muted className="background-video">
-            <source src="/path/to/your/video.mp4" type="video/mp4" />
+            <source src="/Users/I528586/forntendxxx/Frontend/bikeapp/src/assets/5198956-uhd_2160_4096_25fps.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         {/* Content overlay */}

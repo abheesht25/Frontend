@@ -62,14 +62,188 @@
   background-color: #fff;
 }
 
-.login-form, .signup-form {
-  width: 300px;
-  text-align: center;
+.signup-form {
+  width: 400px; /* Adjusted width for better visibility */
+  margin: 2rem auto; /* Centers the form and adds top margin */
+  padding: 2.5rem;
   background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.8s ease-out, slideUp 0.8s ease-out;
+  font-family: 'Poppins', sans-serif;
 }
+
+.signup-form h2 {
+  text-align: center;
+  margin-bottom: 1.8rem;
+  color: #333333;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.signup-form select,
+.signup-form input {
+  width: 100%; /* Ensure full width */
+  padding: 0.85rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.signup-form select:focus,
+.signup-form input:focus {
+  outline: none;
+  border-color: #ffbe76;
+  box-shadow: 0 0 5px rgba(255, 190, 118, 0.4);
+}
+
+.signup-form button {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #ffbe76;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+  background-color: #ff9a4c;
+}
+
+.signup-form p {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.signup-form .link {
+  color: #ffbe76;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.signup-form .link:hover {
+  color: #ff9a4c;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.login-form {
+  width: 380px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.8s ease-out, slideUp 0.8s ease-out;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-form select,
+.login-form input {
+  max-width: 100%;
+  width: 92%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  margin-left: 0.8rem;
+}
+
+.login-form select:focus,
+.login-form input:focus {
+  outline: none;
+  border-color: #ffbe76;
+  box-shadow: 0 0 5px rgba(255, 190, 118, 0.5);
+}
+
+.login-form button {
+  width: 90%;
+  margin-left: 1rem;
+  padding: 0.8rem;
+  background-color: #ffbe76;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #ff9a4c;
+}
+
+.login-form p {
+  text-align: center;
+  margin-top: 1rem;
+  margin-right: 0.2rem;
+}
+
+.login-form .link {
+  color: #ffbe76;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.login-form .link:hover {
+  color: #ff9a4c;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/*-----------------------------------------*/
 
 /* Home view styling after login */
 .home-view .company-section {
