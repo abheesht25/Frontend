@@ -144,8 +144,8 @@
 
 // src/App.js
 
-import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import HomePage from './components/HomePage';
@@ -161,27 +161,47 @@ import TechnicianMyBookings from './components/TechnicianMyBookings';
 import './App.css';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userType, setUserType] = useState('customer');
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return JSON.parse(localStorage.getItem('isAuthenticated')) || false;
+  });
+  const [userType, setUserType] = useState(() => {
+    return localStorage.getItem('userType') || 'customer';
+  });
   const [requests, setRequests] = useState([
     { id: 1, serviceType: 'Repair', customerName: 'John Doe', details: 'Bike repair required.' },
     { id: 2, serviceType: 'Washing', customerName: 'Jane Smith', details: 'Bike washing needed.' },
   ]);
-  const [acceptedRequests, setAcceptedRequests] = useState([]);
+  const [acceptedRequests, setAcceptedRequests] = useState(
+    JSON.parse(localStorage.getItem('acceptedRequests')) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+    localStorage.setItem('userType', userType);
+    localStorage.setItem('acceptedRequests', JSON.stringify(acceptedRequests));
+  }, [isAuthenticated, userType, acceptedRequests]);
 
   const handleLoginSuccess = (type) => {
     setIsAuthenticated(true);
     setUserType(type);
+    localStorage.setItem('isAuthenticated', true);
+    localStorage.setItem('userType', type);
   };
 
-  // Function to handle accepting a booking
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setUserType('customer');
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('acceptedRequests');
+  };
+
   const onAccept = (id) => {
     const acceptedRequest = requests.find((request) => request.id === id);
     setAcceptedRequests([...acceptedRequests, acceptedRequest]);
-    setRequests(requests.filter((request) => request.id !== id)); // Remove from requests after acceptance
+    setRequests(requests.filter((request) => request.id !== id));
   };
 
-  // Function to handle declining a booking
   const onDecline = (id) => {
     setRequests(requests.filter((request) => request.id !== id));
   };
@@ -190,7 +210,11 @@ function App() {
     <div className="app-container">
       {isAuthenticated ? (
         <>
-          {userType === 'customer' ? <Navbar /> : <TechnicianNavbar />}
+          {userType === 'customer' ? (
+            <Navbar onLogout={handleLogout} />
+          ) : (
+            <TechnicianNavbar onLogout={handleLogout} />
+          )}
           <div className="dashboard-view">
             <Routes>
               {userType === 'customer' && (
