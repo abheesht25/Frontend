@@ -5,8 +5,9 @@
     flex-direction: column;
     align-items: center;
     background-color: #f5f5f5;
-    padding-right: 64rem;
+    padding-right: 56rem;
     margin-top: 2rem; 
+    padding-bottom: 10rem;
   }
   
   .page-title {
@@ -14,6 +15,7 @@
     font-weight: bold;
     margin-bottom: 1.5rem;
     text-align: center;
+    padding-right: 8rem;
   }
   
   .shop-cards {
@@ -31,12 +33,17 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
-    padding-right: 62rem;
+    padding-right: 52rem;
     justify-content: space-between;
+    text-align: left;
   }
 
   .card-content {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    display: block;
+    flex-direction: column;
+    text-align: start;
+    margin-right: 20rem;
   }
   
   .shop-card h3 {
@@ -47,6 +54,7 @@
   .shop-card p {
     color: #555;
     margin: 0.5rem 0;
+    text-align: start;
   }
   
   .book-button {
@@ -60,8 +68,8 @@
   transition: background-color 0.3s;
   margin-left: 80rem;
   position: relative;
-  top: -50px;
-  /* align-self: center; */
+  top: -56px;
+ 
 }
   
   .book-button:hover {

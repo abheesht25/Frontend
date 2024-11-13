@@ -1,10 +1,11 @@
 /* Container with top padding to push content below the navbar */
 .schedule-booking-form-container {
-    padding-top: 10px; /* Adjust as needed to fully clear the navbar */
+    padding-top: 5rem; /* Adjust as needed to fully clear the navbar */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 28rem;
+    padding-left: 27rem;
+    padding-bottom: 2rem;
   }
   
   .schedule-booking-form {

@@ -10,7 +10,7 @@ function ScheduleBookingPage() {
   const shops = [
     { id: 1, name: 'Downtown Bike Repair', address: '123 Main St, Cityville', phone: '(123) 456-7890' },
     { id: 2, name: 'Uptown Cycle Service', address: '456 Elm St, Townsville', phone: '(987) 654-3210' },
-    { id: 3, name: 'City Bike Fix', address: '789 Oak St, Village', phone: '(555) 123-4567' },
+    { id: 3, name: 'City Bike Fix Service time', address: '789 Oak St, Village', phone: '(555) 123-4567' },
   ];
 
   const handleBookNow = (shop) => {
