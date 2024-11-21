@@ -1,5 +1,4 @@
 /* Mechanic Home Page Styles */
-
 .mechanic-home-container {
     background: url('/Users/I528586/forntendxxx/Frontend/bikeapp/src/assets/nina-mercado-e9YFrEBWit8-unsplash.jpg') no-repeat center center;
     background-size: cover;
@@ -10,37 +9,74 @@
     justify-content: center;
     color: #ffffff;
     position: relative;
+    animation: fadeInBackground 1.5s ease-in-out;
+}
+
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .welcome-content {
     text-align: center;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    animation: fadeIn 1s ease forwards;
+    padding: 2rem 3rem;
+    background: rgba(0, 0, 0, 0.8); /* Slightly darker background */
+    border-radius: 12px;
+    animation: fadeInContent 1.2s ease-in-out forwards;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    max-width: 400px;
+    width: 90%; /* Responsive width */
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .welcome-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
     margin-bottom: 1rem;
+    color: #ffbe76;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.welcome-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #eaeaea;
 }
 
 .onboard-button {
     background-color: #ff7e39;
     color: white;
-    padding: 0.8rem 1.5rem;
+    padding: 0.8rem 2rem;
     border: none;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: 25px; /* Rounded button */
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .onboard-button:hover {
     background-color: #ff9a4c;
+    transform: scale(1.05);
 }
 
-/* Form Overlay for Onboarding */
 .onboarding-form-overlay {
     position: fixed;
     top: 0;
@@ -50,8 +86,68 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
-    animation: fadeInOverlay 0.5s ease;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+    animation: fadeInOverlay 0.5s ease-in-out;
+    z-index: 1000; /* Ensure overlay stays on top */
+}
+
+.blur-background {
+    filter: blur(px);
+    transition: filter 0.3s ease;
+}
+
+/* Onboarding Form Styling */
+.onboarding-form {
+    background: #ffffff;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    max-width: 90%;
+    animation: fadeInForm 0.6s ease-in-out;
+}
+
+@keyframes fadeInForm {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.onboarding-form h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333333;
+    margin-bottom: 1.5rem;
+}
+
+.onboarding-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.onboarding-form button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #ff7e39;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.onboarding-form button:hover {
+    background-color: #ff9a4c;
 }
 
 @keyframes fadeInOverlay {
@@ -63,7 +159,216 @@
     }
 }
 
-@keyframes fadeIn {
+/* Welcome Box */
+.fancy-welcome {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 350px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    animation: slideIn 0.6s ease-out;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.fancy-welcome-title {
+    font-size: 2rem;
+    color: #ffbe76;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.fancy-greeting {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    font-style: italic;
+    animation: fadeInGreeting 1s ease-in;
+}
+
+.performance-details {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.performance-details p {
+    margin: 0.5rem 0;
+}
+
+/* Button */
+.dashboard-button {
+    background-color: #ffbe76;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.dashboard-button:hover {
+    background-color: #ff9a4c;
+}
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+.onboarded-container {
+    background: url('/Users/I528586/forntendxxx/Frontend/bikeapp/src/assets/nina-mercado-e9YFrEBWit8-unsplash.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    animation: fadeInBackground 1.5s ease-in-out;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.onboarded-welcome {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    text-align: left;
+    animation: slideIn 1s ease-out;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.onboarded-title {
+    font-size: 5.5rem;
+    font-weight: bold;
+    color: #ffbe76;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    animation: fadeInTitle 1.5s ease-in-out;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.onboarded-greeting {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    animation: fadeInGreeting 1.8s ease-in-out;
+}
+
+.performance-details {
+    font-size: 4rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    color: #f0f0f0;
+    animation: fadeInDetails 2s ease-in-out;
+}
+
+.performance-details p {
+    margin: 0.5rem ;
+}
+
+@keyframes fadeInDetails {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dashboard-button {
+    background-color: #ffbe76;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    animation: fadeInButton 2.5s ease-in-out;
+}
+
+.dashboard-button:hover {
+    background-color: #ff9a4c;
+    transform: scale(1.1);
+}
+
+.onboarded-details {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    animation: fadeInDetails 1.8s ease-in-out; /* Smooth fade-in animation */
+    max-width: 400px; /* Limit width for a clean look */
+}
+
+.onboarded-details p {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    color: #f0f0f0;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Slight shadow for text clarity */
+}
+
+/* Animations */
+@keyframes fadeInDetails {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Move into position */
+    }
+}
+
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animations */
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInGreeting {
     from {
         opacity: 0;
     }

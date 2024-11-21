@@ -13,7 +13,7 @@ function TechnicianAcceptNow({ requests, onAccept, onDecline }) {
         ) : (
           requests.map((request) => (
             <div key={request.id} className="technician-card">
-              <div className="card-content">
+              <div className="technician-card-content">
                 <div className="card-info">
                   <h3>Service Type: {request.serviceType}</h3>
                   <p>Customer: {request.customerName}</p>

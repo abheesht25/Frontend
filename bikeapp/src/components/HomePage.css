@@ -14,17 +14,89 @@
   
   .left-section {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 2rem;
+    background: #f9f9f9;
   }
+  
+  .welcome-section {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .welcome-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .highlight {
+    color: #ffbe76;
+  }
+  
+  .greeting {
+    font-size: 1.5rem;
+    color: #34495e;
+  }
+  
+  .booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 1rem;
+    color: #34495e;
+    margin-bottom: 0.5rem;
+  }
+  
+  input, select {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .location-btn, .book-btn {
+    padding: 0.8rem 1.5rem;
+    background-color: #ffbe76;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .location-btn:hover, .book-btn:hover {
+    background-color: #ff9a4c;
+  }
+  
+  .location-message {
+    color: #16a085;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
   
   .right-section {
     flex: 1;
     padding: 2rem;
     /* background-color: #f9f9f9; */
-    border-left: 0px solid #eaeaea;
+    border-left: 0px solid #393939;
     background: url('/Users/I528586/forntendxxx/Frontend/bikeapp/src/assets/5198956-uhd_2160_4096_25fps.mp4');
     display: flex;
-    opacity: 0.7;
+    opacity: 1;
+    
     flex-direction: column;
     justify-content: center;
     background-size: cover; 
@@ -32,29 +104,8 @@
     animation: fadeIn 1.5s ease-in-out;
   }
   
-  .booking-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .location-btn, .book-btn {
-    background-color: #ffbe76;
-    border: none;
-    color: white;
-    padding: 0.7rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .location-btn:hover, .book-btn:hover {
-    background-color: #ff9a4c;
-  }
-  
   .right-section h2 {
-    color: #2c3e50;
+    color: #24282d;
     margin-bottom: 1rem;
   }
   
@@ -76,7 +127,7 @@
     height: 100%;
     object-fit: cover;
     z-index: -1; /* Send video behind content */
-    filter: blur(3px) brightness(0.5); /* Blur and darken for readability */
+    filter: blur(3px) brightness(1.5); /* Blur and darken for readability */
   }
   
   .why-choose-content {

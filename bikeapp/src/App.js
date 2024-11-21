@@ -248,7 +248,7 @@ function App() {
         <>
           <div className="company-section">
             <div className="company-content">
-              <h1 className="company-text">Bike Repair Shop</h1>
+              <h1 className="company-text">MechanIX</h1>
             </div>
           </div>
           <div className="form-container">

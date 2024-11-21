@@ -4,7 +4,7 @@
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    width: 170vh;
+    width: 160vh;
     max-width: 100%;
   }
   
@@ -12,7 +12,7 @@
     text-align: center;
     color: #333;
     font-size: 1.8rem;
-    margin-bottom: 1.5rem;
+    margin-top: 2rem;
   }
   
   .no-requests {
@@ -24,7 +24,8 @@
   .technician-cards {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    margin-left: 2.1rem;
   }
   
   .technician-card {
@@ -42,7 +43,7 @@
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
   }
   
-  .card-content {
+  .technician-card-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,6 +68,8 @@
   .technician-buttons {
     display: flex;
     gap: 0.5rem;
+    justify-content: flex-end;
+    padding-left: 23rem;
   }
   
   .accept-button,

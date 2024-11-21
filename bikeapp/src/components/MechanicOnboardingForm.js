@@ -8,6 +8,11 @@ function MechanicOnboardingForm({ closeForm }) {
         closeForm(); // Close form after submission
     };
 
+    const handleCancel = (e) => {
+        e.preventDefault(); // Prevent form reset behavior
+        closeForm(); // Close the form modal
+    };
+
     return (
         <div className="overlay" onClick={closeForm}>
             <div className="onboarding-form" onClick={(e) => e.stopPropagation()}>
@@ -17,8 +22,16 @@ function MechanicOnboardingForm({ closeForm }) {
                     <input type="text" placeholder="Shop Name" required />
                     <input type="text" placeholder="Phone Number" required />
                     <input type="text" placeholder="Shop Address" required />
-                    <button type="submit" className="submit-button">Submit</button>
-                    <button type="button" className="cancel-button" onClick={closeForm}>Cancel</button>
+                    <div className="form-buttons">
+                        <button type="submit" className="submit-button">Submit</button>
+                        <button
+                            type="button"
+                            className="cancel-button"
+                            onClick={handleCancel} // Correctly handle cancel
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

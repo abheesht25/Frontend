@@ -1,34 +1,57 @@
 // src/components/ScheduleBookingPage.js
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './ScheduleBookingPage.css';
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+import "./ScheduleBookingPage.css";
 
-function ScheduleBookingPage() {
-  const navigate = useNavigate();
+function ScheduleBooking() {
+  const [searchParams] = useSearchParams();
+  const [shops, setShops] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Sample data for shops
-  const shops = [
-    { id: 1, name: 'Downtown Bike Repair', address: '123 Main St, Cityville', phone: '(123) 456-7890' },
-    { id: 2, name: 'Uptown Cycle Service', address: '456 Elm St, Townsville', phone: '(987) 654-3210' },
-    { id: 3, name: 'City Bike Fix Service time', address: '789 Oak St, Village', phone: '(555) 123-4567' },
-  ];
+  const latitude = searchParams.get("lat");
+  const longitude = searchParams.get("long");
 
-  const handleBookNow = (shop) => {
-    navigate('/schedule-booking-form', { state: { shop } });
-  };
+  useEffect(() => {
+    const fetchShops = async () => {
+      try {
+        const response = await fetch(
+          `https://your-api-endpoint.com/shops?lat=${latitude}&long=${longitude}`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setShops(data); // Store the API response in the shops list
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching shops:", err);
+        setError("Failed to fetch shops. Please try again later.");
+        setLoading(false);
+      }
+    };
+
+    fetchShops();
+  }, [latitude, longitude]);
+
+  if (loading) {
+    return <p>Loading shops...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
-    <div className="schedule-booking-container">
-      <h2 className="page-title">Available Bike Repair Shops</h2>
-      <div className="shop-cards">
+    <div className="shop-list-container">
+      <h2>Available Shops Near You</h2>
+      <div className="shop-list">
         {shops.map((shop) => (
-          <div key={shop.id} className="shop-card">
-            <div className="card-content">
-              <p><strong>Shop:</strong> {shop.name}</p>
-              <p><strong>Address:</strong> {shop.address}</p>
-              <p><strong>Phone:</strong> {shop.phone}</p>
-            </div>
-            <button onClick={() => handleBookNow(shop)} className="book-button">Book</button>
+          <div className="shop-card" key={shop.id}>
+            <h3>{shop.name}</h3>
+            <p>{shop.address}</p>
+            <p>Distance: {shop.distance} km</p>
+            <button className="select-shop-button">Select Shop</button>
           </div>
         ))}
       </div>
@@ -36,4 +59,4 @@ function ScheduleBookingPage() {
   );
 }
 
-export default ScheduleBookingPage;
+export default ScheduleBooking;

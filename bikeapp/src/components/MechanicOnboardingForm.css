@@ -1,20 +1,22 @@
-/* MechanicOnboardingForm.css */
-
+/* Full-screen blur effect */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    backdrop-filter: blur(8px); /* Blur effect */
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: fadeOverlay 0.5s ease forwards;
+    z-index: 1000; /* Ensure it's above all other elements */
+    animation: fadeInOverlay 0.5s ease;
 }
 
+/* Onboarding form styles */
 .onboarding-form {
-    background: white;
+    background: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
     padding: 2rem;
     border-radius: 10px;
     max-width: 400px;
@@ -22,7 +24,7 @@
     position: relative;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     animation: scaleUp 0.3s ease forwards;
-    opacity: 1; /* Ensure full opacity */
+    z-index: 1010; /* Ensure form appears above the blur */
 }
 
 .onboarding-form h2 {
