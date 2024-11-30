@@ -1,4 +1,5 @@
 // src/components/ScheduleBookingForm.js
+
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './ScheduleBookingForm.css'; // Ensure your CSS file is correctly imported
@@ -6,98 +7,169 @@ import './ScheduleBookingForm.css'; // Ensure your CSS file is correctly importe
 function ScheduleBookingForm() {
   const { state } = useLocation();
   const shop = state?.shop || {};
+
   const [date, setDate] = useState('');
   const [timeSlot, setTimeSlot] = useState('');
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
-  const [address, setAddress] = useState('Fetching address...');
+  const [vehicleType, setVehicleType] = useState('');
+  const [modelName, setModelName] = useState('');
+  const [serviceDesc, setServiceDesc] = useState('');
+  const [serviceType, setServiceType] = useState('');
+  const [assignedTechnician] = useState(shop.userName || '');
+
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const [locationMessage, setLocationMessage] = useState('');
 
-  const handleSchedule = () => {
-    if (date && timeSlot) {
-      alert(`Booking at ${shop.name} successfully scheduled for ${date} at ${timeSlot}!`);
-    } else {
-      alert("Please select a date and a time slot for the booking.");
-    }
-  };
-
-  // Function to fetch the current location
   const fetchLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const { latitude, longitude } = position.coords;
-          setLatitude(latitude);
-          setLongitude(longitude);
-          fetchAddressFromCoords(latitude, longitude)
-            .then((data) => {
-              const fetchedAddress = `${data.neighbourhood || ''}, ${data.suburb || ''}, ${data.village || ''}, ${data.county || ''}, ${data.state_district || ''}, ${data.country || ''}${data.postcode ? ', ' + data.postcode : ''}`.trim();
-              setAddress(fetchedAddress || 'Address not found');
-            })
-            .catch((error) => {
-              console.error("Error fetching address:", error);
-              setAddress('Unable to fetch address. Please try again later.');
-            });
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+          setLocationMessage('Location fetched successfully!');
+          console.log('Latitude:', position.coords.latitude, 'Longitude:', position.coords.longitude);
         },
         (error) => {
-          console.error("Error fetching location:", error);
-          setLocationMessage("Unable to retrieve location. Please check your settings.");
+          console.error('Error getting location: ', error);
+          setLocationMessage('Unable to retrieve location. Please try again.');
         }
       );
     } else {
-      setLocationMessage("Geolocation is not supported by this browser.");
+      setLocationMessage('Geolocation is not supported by this browser.');
     }
   };
 
-  // Function to fetch the address from latitude and longitude
-  const fetchAddressFromCoords = (latitude, longitude) => {
-    const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
-    return fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data && data.address) {
-          return data.address;
-        } else {
-          throw new Error("Address not found");
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching address:", error);
-        throw error;
+  const handleSchedule = async () => {
+    if (!date || !timeSlot || !vehicleType || !modelName || !serviceDesc || !serviceType) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    if (latitude === null || longitude === null) {
+      alert('Please fetch your location first.');
+      return;
+    }
+
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+      alert('You are not authenticated. Please log in.');
+      return;
+    }
+
+    const payload = {
+      latitude,
+      longitude,
+      date,
+      time: timeSlot,
+      vehicleType,
+      modelName,
+      serviceDescription: serviceDesc,
+      serviceType,
+      assignedTechnician,
+      shopName: shop.shopName,
+    };
+
+    console.log('Payload:', JSON.stringify(payload, null, 2));
+
+    const apiUrl = 'https://user.c-09499df.kyma.ondemand.com/api/v1/u/scheduleServiceRequest';
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
       });
+
+      if (response.ok) {
+        const responseData = await response.text();
+        alert(`Booking successfully scheduled: ${responseData}`);
+      } else {
+        const errorData = await response.json();
+        alert(`Error: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error('Error scheduling booking:', error);
+      alert('An error occurred while scheduling the booking.');
+    }
   };
+
+  const today = new Date().toISOString().split('T')[0];
+  const nextMonthDate = new Date();
+  nextMonthDate.setMonth(nextMonthDate.getMonth() + 1);
+  const lastSelectableDate = nextMonthDate.toISOString().split('T')[0];
 
   return (
     <div className="schedule-booking-form-container">
       <div className="schedule-booking-form">
-        <h3 className="form-title">Schedule Booking at {shop.name}</h3>
-        <p>Address: {shop.address}</p>
-        <p>Phone: {shop.phone}</p>
+        <h3 className="form-title">Schedule Booking at {shop.shopName}</h3>
+        <p>Shop Name: {shop.shopName || 'Not Available'}</p>
+        <p>Phone: {shop.mobileNo || 'Not Available'}</p>
 
-        {/* Customer Details Section */}
-        <input type="text" placeholder="Your Name" required />
-        <input type="text" placeholder="Phone Number" required />
-        <input type="email" placeholder="Email Address" required />
-        <input type="text" placeholder="Bike Model" required />
-        <input type="text" placeholder="Model Variant" required />
-        <input type="text" placeholder="Service Category" required />
+        <input
+          type="text"
+          placeholder="Vehicle Type"
+          value={vehicleType}
+          onChange={(e) => setVehicleType(e.target.value)}
+          required
+          className="fancy-input"
+        />
+        <input
+          type="text"
+          placeholder="Model Name"
+          value={modelName}
+          onChange={(e) => setModelName(e.target.value)}
+          required
+          className="fancy-input"
+        />
+        <textarea
+          placeholder="Service Description"
+          value={serviceDesc}
+          onChange={(e) => setServiceDesc(e.target.value)}
+          required
+          className="fancy-textarea"
+        />
+        <input
+          type="text"
+          placeholder="Service Type"
+          value={serviceType}
+          onChange={(e) => setServiceType(e.target.value)}
+          required
+          className="fancy-input"
+        />
+        <input
+          type="text"
+          placeholder="Assigned Technician"
+          value={assignedTechnician}
+          readOnly
+          className="fancy-input"
+        />
 
-        {/* Date and Time Picker */}
+        <button onClick={fetchLocation} type="button" className="fetch-location-btn">
+          Fetch Location
+        </button>
+        {locationMessage && <p className="location-message">{locationMessage}</p>}
+
         <label>Select Date:</label>
         <input
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
+          min={today}
+          max={lastSelectableDate}
           required
+          className="fancy-input"
         />
 
         <label>Select Time Slot:</label>
-        <select value={timeSlot} onChange={(e) => setTimeSlot(e.target.value)} required>
+        <select
+          value={timeSlot}
+          onChange={(e) => setTimeSlot(e.target.value)}
+          required
+          className="fancy-select"
+        >
           <option value="">Select a Time Slot</option>
           <option value="9:00 AM - 11:00 AM">9:00 AM - 11:00 AM</option>
           <option value="11:00 AM - 1:00 PM">11:00 AM - 1:00 PM</option>
@@ -105,18 +177,9 @@ function ScheduleBookingForm() {
           <option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
         </select>
 
-        {/* Fetch Location Button */}
-        <button type="button" onClick={fetchLocation} className="fetch-location-btn">
-          Fetch Location
+        <button onClick={handleSchedule} className="schedule-btn">
+          Schedule Booking
         </button>
-        {address && (
-          <p>
-            <b>Address:</b> {address}
-          </p>
-        )}
-        {locationMessage && <p className="location-message">{locationMessage}</p>}
-
-        <button onClick={handleSchedule}>Schedule Booking</button>
       </div>
     </div>
   );

@@ -5,8 +5,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-    backdrop-filter: blur(8px); /* Blur effect */
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker semi-transparent overlay */
+    backdrop-filter: blur(10px); /* Stronger blur effect for a premium feel */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,13 +16,13 @@
 
 /* Onboarding form styles */
 .onboarding-form {
-    background: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    background: rgba(255, 255, 255, 0.98); /* Clean white with slight transparency */
     padding: 2rem;
-    border-radius: 10px;
-    max-width: 400px;
+    border-radius: 15px; /* Softer corners for modern design */
+    max-width: 420px;
     width: 90%;
     position: relative;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     animation: scaleUp 0.3s ease forwards;
     z-index: 1010; /* Ensure form appears above the blur */
 }
@@ -30,27 +30,44 @@
 .onboarding-form h2 {
     text-align: center;
     margin-bottom: 1.5rem;
-    color: #333;
+    color: #222; /* Darker heading for better contrast */
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
 }
 
-.onboarding-form input {
-    width: 93%;
+/* Input fields */
+.onboarding-form input,
+.onboarding-form select {
+    width: 100%;
     padding: 0.8rem;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.onboarding-form input:focus,
+.onboarding-form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Highlight on focus */
+    outline: none;
+}
+
+/* Buttons */
 .onboarding-form button {
     width: 100%;
     padding: 0.8rem;
     margin-top: 0.5rem;
     font-size: 1rem;
+    font-family: 'Arial', sans-serif;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .onboarding-form button[type="submit"] {
@@ -58,13 +75,48 @@
     color: white;
 }
 
+.onboarding-form button[type="submit"]:hover {
+    background-color: #45a049;
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
 .onboarding-form button[type="button"] {
     background-color: #f44336;
     color: white;
 }
 
-.onboarding-form button:hover {
-    opacity: 0.9;
+.onboarding-form button[type="button"]:hover {
+    background-color: #e53935;
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Location section */
+.location-section {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.fetch-location-btn {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.fetch-location-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.location-message {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: green;
+    font-family: 'Arial', sans-serif;
 }
 
 /* Animations */
@@ -85,5 +137,32 @@
     to {
         transform: scale(1);
         opacity: 1;
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .onboarding-form {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .onboarding-form h2 {
+        font-size: 1.5rem;
+    }
+
+    .onboarding-form input,
+    .onboarding-form select {
+        font-size: 0.9rem;
+    }
+
+    .onboarding-form button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+
+    .fetch-location-btn {
+        padding: 0.7rem;
+        font-size: 0.9rem;
     }
 }

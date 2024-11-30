@@ -16,9 +16,27 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Align content to the top */
     padding: 2rem;
     background: #f9f9f9;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 100vh; /* Restrict the height to allow scrolling */
+    scrollbar-width: thin; /* For Firefox: make scrollbar thinner */
+    scrollbar-width: none; /* For Firefox: style the scrollbar */
+  }
+  
+  /* For Webkit-based browsers (Chrome, Edge, Safari) */
+  .left-section::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  .left-section::-webkit-scrollbar-thumb {
+    background-color: #ffbe76;
+    border-radius: 4px;
+  }
+  
+  .left-section::-webkit-scrollbar-track {
+    background-color: #f9f9f9;
   }
   
   .welcome-section {
@@ -37,10 +55,24 @@
   }
   
   .greeting {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
     color: #34495e;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-30px); /* Start position for animation */
+    animation: slideIn 1.2s ease-in-out forwards; /* Trigger the animation */
+}
+@keyframes slideIn {
+  0% {
+      opacity: 0;
+      transform: translateY(-30px);
   }
-  
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
   .booking-form {
     display: flex;
     flex-direction: column;
@@ -63,6 +95,7 @@
     font-size: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
+    width: 1rem;
   }
   
   .location-btn, .book-btn {
@@ -93,7 +126,7 @@
     padding: 2rem;
     /* background-color: #f9f9f9; */
     border-left: 0px solid #393939;
-    background: url('/Users/I528586/forntendxxx/Frontend/bikeapp/src/assets/5198956-uhd_2160_4096_25fps.mp4');
+    /* background: url('../assets/5198956-uhd_2160_4096_25fps.mp4'); */
     display: flex;
     opacity: 1;
     
@@ -101,6 +134,7 @@
     justify-content: center;
     background-size: cover; 
     background-position: center; 
+    padding-right: 1.5rem;
     animation: fadeIn 1.5s ease-in-out;
   }
   
@@ -127,7 +161,8 @@
     height: 100%;
     object-fit: cover;
     z-index: -1; /* Send video behind content */
-    filter: blur(3px) brightness(1.5); /* Blur and darken for readability */
+    filter: blur(3px) brightness(1); /* Blur and darken for readability */
+    object-fit: cover;
   }
   
   .why-choose-content {
@@ -221,6 +256,26 @@
   .nav-links a:hover {
     color: #ffd699;
   }
+
+  .map-container {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .home-container .left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .address-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
   
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }

@@ -379,25 +379,22 @@ button:hover {
   text-decoration: none;
   transition: color 0.3s;
 }
-
-.nav-links a:hover {
-  color: #ffd699;
-}
-
-/* Logout Button Styling */
 .logout-button {
-  background: none;
-  border: none;
-  color: #ffbe76;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s;
-  text-decoration: none;
+  background: none; /* Remove the button background */
+  border: none; /* Remove the border */
+  color: #ffbe76; /* Match the color of other links */
+  font-weight: bold; /* Optional: Adjust weight to match */
+  font-size: 1.1rem;
+  cursor: pointer; /* Keep the pointer cursor */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
 .logout-button:hover {
-  color: #e74c3c; /* Change color on hover to indicate it’s clickable */
+  color: #ffd699; /* Match the hover effect of other links */
+}
+
+.nav-links a:hover {
+  color: #ffd699;
 }
 
 /* Animations */
